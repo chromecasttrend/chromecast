@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Google AJAX Feed API - AJAX Slide Show Sample</title>
+  <script src="http://www.google.com/jsapi"
+    type="text/javascript"></script>
+  <script src="http://www.google.com/uds/solutions/slideshow/gfslideshow.js"
+    type="text/javascript"></script>
+
+  <style type="text/css">
+    .gss a img {border : none;}
+    .gss {
+      width: 720px;
+      height: 480px;
+      color: #dddddd;
+      background-color: #000000;
+      padding: 8px;
+    }
+
+  </style>
+  <script type="text/javascript">
+    function load() {
+      //var samples = "http://dlc0421.googlepages.com/gfss.rss";
+      //feed = "https://picasaweb.google.com/data/feed/base/user/109283749370195583163"
+      //var feed = 'https://picasaweb.google.com/data/feed/base/user/109283749370195583163'
+      //var feed = 'https://picasaweb.google.com/data/feed/api/user/picasateam/albumid/5114585224189980161'
+      //var feed = 'http://picasaweb.google.com/data/feed/api/user/chromecasttrend/albumid/6027399420841770193'
+      //var feed = 'https://picasaweb.google.com/data/feed/base/user/104227551250220639954/albumid/5114585224189980161'
+      //var feed = 'https://picasaweb.google.com/data/feed/base/user/104227551250220639954/albumid/5114654179889917777'
+      //var feed = 'https://picasaweb.google.com/data/feed/base/user/109283749370195583163/albumid/6027399420841770193'
+      var feed = 'http://picasaweb.google.com/data/feed/base/user/109283749370195583163/albumid/6027399420841770193'
+      var samples = feed
+      var options = {
+        displayTime: 2000,
+        transistionTime: 600,
+        linkTarget : google.feeds.LINK_TARGET_BLANK
+      };
+      new GFslideShow(samples, "slideshow", options);
+
+    }
+    google.load("feeds", "1");
+    google.setOnLoadCallback(load);
+  </script>
+</head>
+
+<body>
+  <div id="body">
+    <div id="slideshow" class="gss">Loading...</div>
+  </div>
+</body>
+</html>

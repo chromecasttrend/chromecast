@@ -17,29 +17,37 @@ limitations under the License.
 <html>
   <head>
     <style type="text/css">
-	  body {
-	    overflow:hidden;
-	  }
-      div{
-	    height:720PX;
-	    width:1280PX;
-	    text-align:center;
-	    border:0px solid silver;
-	    display: table-cell;
-	    vertical-align:middle;
-            color:gray;
-	    background-color:blue;
-	    font-weight:bold;
-	    font-family:Verdana, Geneva, sans-serif;
-	    font-size:40px;
-	}
+    .gss a img {border : none;}
+    .gss {
+      width: 720px;
+      height: 480px;
+      color: #dddddd;
+      background-color: #000000;
+      padding: 8px;
+    }
+
     </style>
     <title>Cast Hello Text</title>
   </head>
   <body>
 	<DIV id="message">Talk to me</DIV>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
     <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+    <script type="text/javascript" src="http://www.google.com/uds/solutions/slideshow/gfslideshow.js"></script>
     <script type="text/javascript">
+        function load() {
+            var feed = 'http://picasaweb.google.com/data/feed/base/user/109283749370195583163/albumid/6027399420841770193'
+            var samples = feed
+            var options = {
+                displayTime: 2000,
+                transistionTime: 600,
+                linkTarget : google.feeds.LINK_TARGET_BLANK
+        };
+        new GFslideShow(samples, "slideshow", options);
+        }
+        google.load("feeds", "1");
+        google.setOnLoadCallback(load);
+
       window.onload = function() {
         cast.receiver.logger.setLevelValue(0);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
@@ -93,10 +101,16 @@ limitations under the License.
       
       // utility function to display the text message in the input field
       function displayText(text) {
-        console.log(text);
-        document.getElementById("message").innerHTML=text;
-        window.castReceiverManager.setApplicationState(text);
+        google.load("feeds", "1");
+        google.setOnLoadCallback(load);
+        //console.log(text);
+        //document.getElementById("message").innerHTML=text;
+        //window.castReceiverManager.setApplicationState(text);
       };
-    </script>
+  </script>
+  <body>
+    <div id="body">
+        <div id="slideshow" class="gss">Loading...</div>
+    </div>
   </body>
 </html>

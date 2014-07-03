@@ -27,8 +27,8 @@ class MainHandler(webapp2.RequestHandler):
         
     def get(self):
         #self.response.write('Hello world!')
-        self.render('views/index.html', None)
+        self.render('views/receiver.html', None)
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/receiver.html', MainHandler)
 ], debug=True)

@@ -22,19 +22,21 @@ limitations under the License.
       width: 720px;
       height: 480px;
       color: #dddddd;
-      background-color: #000000;
+      background-color: blue;
       padding: 8px;
     }
-
     </style>
-    <title>Cast Hello Text</title>
-  </head>
-  <body>
-	<DIV id="message">Talk to me</DIV>
     <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
     <script type="text/javascript" src="http://www.google.com/uds/solutions/slideshow/gfslideshow.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+    <title>Cast Hello Text</title>
+</head>
+<body>
+    <div id="body">
+        <div id="slideshow" class="gss">Loading...</div>
+    </div>
+</body>
+<script type="text/javascript">
         function load() {
             var feed = 'http://picasaweb.google.com/data/feed/base/user/109283749370195583163/albumid/6027399420841770193'
             var samples = feed
@@ -42,7 +44,7 @@ limitations under the License.
                 displayTime: 2000,
                 transistionTime: 600,
                 linkTarget : google.feeds.LINK_TARGET_BLANK
-        };
+           };
         new GFslideShow(samples, "slideshow", options);
         }
         google.load("feeds", "1");
@@ -86,6 +88,8 @@ limitations under the License.
 
         // handler for the CastMessageBus message event
         window.messageBus.onMessage = function(event) {
+          google.load("feeds", "1");
+          google.setOnLoadCallback(load);
           console.log('Message [' + event.senderId + ']: ' + event.data);
           // display the message from the sender
           displayText(event.data);
@@ -101,16 +105,9 @@ limitations under the License.
       
       // utility function to display the text message in the input field
       function displayText(text) {
-        google.load("feeds", "1");
-        google.setOnLoadCallback(load);
-        //console.log(text);
-        //document.getElementById("message").innerHTML=text;
-        //window.castReceiverManager.setApplicationState(text);
+        console.log(text);
+        document.getElementById("message").innerHTML=text;
+        window.castReceiverManager.setApplicationState(text);
       };
   </script>
-  <body>
-    <div id="body">
-        <div id="slideshow" class="gss">Loading...</div>
-    </div>
-  </body>
 </html>

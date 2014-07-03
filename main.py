@@ -29,6 +29,18 @@ class MainHandler(webapp2.RequestHandler):
         #self.response.write('Hello world!')
         self.render('views/receiver.html', None)
 
-app = webapp2.WSGIApplication([
-    ('/receiver.html', MainHandler)
-], debug=True)
+class Receiver2Handler(webapp2.RequestHandler):
+    def render(self, template_file, template_value):
+        path = os.path.join(os.path.dirname(__file__), template_file)
+        logging.info("path %r", path)
+        self.response.out.write(template.render(path, template_value))
+        
+    def get(self):
+        #self.response.write('Hello world!')
+        self.render('views/receiver2.html', None)
+
+app = webapp2.WSGIApplication(routes=[
+    ('/receiver.html', MainHandler),
+    ('/receiver2.html', Receiver2Handler)
+    ], debug=True)
+

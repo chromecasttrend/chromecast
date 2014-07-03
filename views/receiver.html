@@ -26,8 +26,8 @@ limitations under the License.
       padding: 8px;
     }
     </style>
-    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-    <script type="text/javascript" src="http://www.google.com/uds/solutions/slideshow/gfslideshow.js"></script>
+    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/uds/solutions/slideshow/gfslideshow.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
     <title>Cast Hello Text</title>
 </head>
@@ -35,8 +35,10 @@ limitations under the License.
     <div id="body">
         <div id="slideshow" class="gss">Loading...</div>
     </div>
+        <div id="message">hello.......</div>
 </body>
 <script type="text/javascript">
+        gs = null
         function load() {
             var feed = 'http://picasaweb.google.com/data/feed/base/user/109283749370195583163/albumid/6027399420841770193'
             var samples = feed
@@ -45,12 +47,15 @@ limitations under the License.
                 transistionTime: 600,
                 linkTarget : google.feeds.LINK_TARGET_BLANK
            };
-        new GFslideShow(samples, "slideshow", options);
+            new GFslideShow(samples, "slideshow", options);
+            gs = new GFslideShow(samples, "slideshow", options);
+            return gs
         }
+
         google.load("feeds", "1");
         google.setOnLoadCallback(load);
 
-      window.onload = function() {
+        window.onload = function() {
         cast.receiver.logger.setLevelValue(0);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         console.log('Starting Receiver Manager');

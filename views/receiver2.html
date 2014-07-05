@@ -21,7 +21,7 @@ limitations under the License.
     .gss a img {border : none;}
     .gss {
       
-      height: 480px;
+      height: 800px;
       color: #dddddd;
       background-color: black;
       padding: 8px;
@@ -52,14 +52,15 @@ limitations under the License.
 <script type="text/javascript">
         gs = null
         function load() {
-            var feed = 'http://picasaweb.google.com/data/feed/base/user/109283749370195583163/albumid/6032482533181407745'
+            var feed = 'http://picasaweb.google.com/data/feed/base/user/109283749370195583163/albumid/6032482533181407745?&thumbsize=1024'
             var samples = feed
             var options = {
                 displayTime: 2000,
                 transistionTime: 600,
                 pauseOnHover : false,
                 fullControlPanel : true,
-                linkTarget : google.feeds.LINK_TARGET_BLANK
+                linkTarget : google.feeds.LINK_TARGET_BLANK,
+				scaleImages : true
            };
             new GFslideShow(samples, "slideshow", options);
             gs = new GFslideShow(samples, "slideshow", options);

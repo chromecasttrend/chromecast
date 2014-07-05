@@ -17,14 +17,28 @@ limitations under the License.
 <html>
   <head>
     <style type="text/css">
+	body {background-color:black;}
     .gss a img {border : none;}
     .gss {
-      width: 720px;
+      
       height: 480px;
       color: #dddddd;
       background-color: black;
       padding: 8px;
     }
+	.msg{
+	    height:80px;
+		display:block;
+	    width : 100%;
+	    text-align:center;
+	    border:0px solid silver;
+	    vertical-align:middle;
+	    color:#FFFFFF;
+	    background-color:#000000;
+	    font-weight:bold;
+	    font-family:Verdana, Geneva, sans-serif;
+	    font-size:40px;
+	}
     </style>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
     <script type="text/javascript" src="https://www.google.com/uds/solutions/slideshow/gfslideshow.js"></script>
@@ -32,10 +46,8 @@ limitations under the License.
     <title>Cast Hello Text</title>
 </head>
 <body>
-    <div id="body">
-        <div id="slideshow" class="gss">Loading...</div>
-    </div>
-        <div id="message">hello.......</div>
+    <div id="slideshow" class="gss">Loading...</div>
+    <div id="message" class="msg">hello.......</div>
 </body>
 <script type="text/javascript">
         gs = null

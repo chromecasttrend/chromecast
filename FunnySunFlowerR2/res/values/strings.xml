@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">FunnySunFlowerR2</string>
+	<string name="app_id">09AD4306</string>
+    <string name="namespace">urn:x-cast:com.google.cast.sample.helloworld</string>
+    <string name="action_settings">Settings</string>
+    <string name="message_to_cast">Message to Cast&#8230;</string>
+    <string name="media_route_menu_title">Play on&#8230;</string>
+    <string name="instructions">大聲說出祝福的話</string>
+    
+</resources>
